@@ -19,7 +19,7 @@ task("deploy").setAction(async () => {
 });
 
 process.env.NETWORK = process.env.NETWORK?.toUpperCase() || "ETH";
-console.log(`🌐 network`, process.env.NETWORK, "blocknumber", process.env.BLOCK_NUMBER, "🌐");
+console.log(`🌐 network`, process.env.NETWORK, "blocknumber", process.env.BLOCK, "🌐");
 
 export default {
   solidity: {
@@ -35,7 +35,7 @@ export default {
   networks: {
     hardhat: {
       forking: {
-        blockNumber: process.env.BLOCK_NUMBER ? parseInt(process.env.BLOCK_NUMBER!) : undefined,
+        blockNumber: process.env.BLOCK ? parseInt(process.env.BLOCK!) : undefined,
         url: (process.env as any)[`NETWORK_URL_${process.env.NETWORK}`] || "",
       },
       blockGasLimit: 10e6,
