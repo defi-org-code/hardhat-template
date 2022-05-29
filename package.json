@@ -1,0 +1,29 @@
+{
+  "name": "hardhat-template",
+  "version": "0.0.1",
+  "description": "",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/defi-org-code/hardhat-template.git"
+  },
+  "homepage": "https://github.com/defi-org-code/hardhat-template#readme",
+  "license": "MIT",
+  "author": "DeFi.org",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf artifacts cache",
+    "prettier": "prettier --write '{contracts,src,test}/**/*.{ts,js,json,sol}'",
+    "typechain": "hardhat typechain",
+    "prebuild": "npm run prettier && npm run typechain",
+    "build": "hardhat compile && solhint 'contracts/**/*.sol'",
+    "test": "DEBUG=web3-candies hardhat test --logs",
+    "deploy": "hardhat deploy --network $1"
+  },
+  "devDependencies": {
+    "@defi.org/web3-candies": "3.x"
+  },
+  "prettier": {
+    "printWidth": 180
+  }
+}
